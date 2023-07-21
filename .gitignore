@@ -1,0 +1,12 @@
+# Directories
+node_modules/
+dist/
+build/
+logs/
+coverage/
+
+# Files
+.env
+
+# Dependency lock files
+package-lock.json
