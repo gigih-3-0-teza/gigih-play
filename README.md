@@ -88,9 +88,7 @@ or you can copy from `.env.example`
 - Response Body Error :
 ```json
 {
-    "errors": [
-        "string"
-    ]
+    "errors": "string"
 }
 ```
 
@@ -121,9 +119,7 @@ or you can copy from `.env.example`
 - Response Body Error :
 ```json
 {
-    "errors": [
-        "string"
-    ]
+    "errors": "string"
 }
 ```
 
@@ -154,9 +150,7 @@ or you can copy from `.env.example`
 - Response Body Error :
 ```json
 {
-    "errors": [
-        "string"
-    ]
+    "errors": "string"
 }
 ```
 
@@ -172,9 +166,7 @@ or you can copy from `.env.example`
 - Response Body Error :
 ```json
 {
-    "errors": [
-        "string"
-    ]
+    "errors": "string"
 }
 ```
 
@@ -217,9 +209,7 @@ or you can copy from `.env.example`
 - Response Body Error :
 ```json
 {
-    "errors": [
-        "string"
-    ]
+    "errors": "string"
 }
 ```
 
@@ -251,9 +241,7 @@ or you can copy from `.env.example`
 - Response Body Error :
 ```json
 {
-    "errors": [
-        "string"
-    ]
+    "errors": "string"
 }
 ```
 
@@ -284,9 +272,7 @@ or you can copy from `.env.example`
 - Response Body Error :
 ```json
 {
-    "errors": [
-        "string"
-    ]
+    "errors": "string"
 }
 ```
 
@@ -302,9 +288,7 @@ or you can copy from `.env.example`
 - Response Body Error :
 ```json
 {
-    "errors": [
-        "string"
-    ]
+    "errors": "string"
 }
 ```
 
@@ -353,9 +337,7 @@ or you can copy from `.env.example`
 - Response Body Error :
 ```json
 {
-    "errors": [
-        "string"
-    ]
+    "errors": "string"
 }
 ```
 
@@ -371,8 +353,6 @@ or you can copy from `.env.example`
 - Response Body Error :
 ```json
 {
-    "errors": [
-        "string"
-    ]
+    "errors": "string"
 }
 ```
