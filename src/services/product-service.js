@@ -24,9 +24,8 @@ const getById = async (id) => {
 
 const update = async (id, request) => {
     const product = validate(updateProductValidation, request);
-    console.log(product);
+    product.updatedAt = Date.now();
     const updated = await Product.findByIdAndUpdate(id, product);
-    console.log(updated);
     if (!updated) {
         throw new ResponseError(404, 'Product not found!');
     }
