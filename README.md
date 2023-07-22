@@ -187,6 +187,7 @@ This API is used to manage the data of Gigih Play (Tokopedia Play Clone) applica
     "price": "integer",
     "image": "file",
     "link": "string",
+    "video_id": "string"
 }
 ```
 - Response Body Success :
