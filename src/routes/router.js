@@ -1,6 +1,7 @@
 import { Router } from "express";
 import videoController from "../controllers/video-controller.js";
 import productController from "../controllers/product-controller.js";
+import commentController from "../controllers/comment-controller.js";
 
 const router = Router();
 
@@ -18,5 +19,9 @@ router.get("/products/:id", productController.getById);
 router.put("/products/:id", productController.update);
 router.delete("/products/:id", productController.remove);
 
+// Comment API
+router.post("/comments", commentController.create);
+router.get("/comments", commentController.getAll);
+router.delete("/comments/:id", commentController.remove);
 
 export default router;

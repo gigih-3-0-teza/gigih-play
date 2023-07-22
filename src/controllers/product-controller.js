@@ -13,7 +13,7 @@ const create = async (req, res, next) => {
 
 const getAll = async (req, res, next) => {
     try {
-        const result = await productService.getAll();
+        const result = await productService.getAll(req.query.videoId);
         res.status(200).json({
             data: result
         });
