@@ -1,5 +1,5 @@
 import express from "express";
-import { APP_PORT } from "./src/config/constants.js";
+import { PORT } from "./src/config/constants.js";
 import { connectDB } from "./src/config/database.js";
 import { logger } from "./src/utils/logging.js";
 import router from "./src/routes/router.js";
@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(router);
 app.use(errorMiddleware);
 
-app.listen(APP_PORT, () => {
-    logger.info(`Server is listening on port ${APP_PORT}`);
+app.listen(PORT, () => {
+    logger.info(`Server is listening on port ${PORT}`);
 });
 connectDB();
