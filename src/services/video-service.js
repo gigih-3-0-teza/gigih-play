@@ -16,7 +16,9 @@ const getAll = async (search) => {
 }
 
 const getById = async (id) => {
-    const video = await Video.findById(id).populate('products').populate('comments');
+    const video = await Video.findById(id)
+        .populate('products')
+        .populate('comments', null, null, { sort: { 'timestamp': -1 } });
     if (!video) {
         throw new ResponseError(404, 'Video not found!');
     }
