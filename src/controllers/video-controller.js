@@ -12,8 +12,9 @@ const create = async (req, res, next) => {
 }
 
 const getAll = async (req, res, next) => {
+    const search = req.query.search;
     try {
-        const result = await videoService.getAll();
+        const result = await videoService.getAll(search);
         res.status(200).json({
             data: result
         });

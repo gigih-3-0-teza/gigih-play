@@ -8,7 +8,10 @@ const create = async (request) => {
     return await Video.create(video);
 }
 
-const getAll = async () => {
+const getAll = async (search) => {
+    if (search) {
+        return await Video.find({ title: { $regex: search, $options: 'i' } });
+    }
     return await Video.find();
 }
 
