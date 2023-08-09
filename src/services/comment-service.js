@@ -6,9 +6,10 @@ import Video from '../models/video.js';
 
 const create = async (request) => {
     const comment = validate(createCommentValidation, request);
-    const video = Video.findById(comment.video);
+    const videoId = comment.video;
     delete comment.video;
     const newComment = await Comment.create(comment);
+    const video = await Video.findById(videoId);
     video.comments.push(newComment._id);
     await video.save();
     return newComment;
