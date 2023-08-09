@@ -13,7 +13,6 @@ const updateProductValidation = Joi.object({
     price: Joi.number().required(),
     image: Joi.string().required(),
     link: Joi.string().required(),
-    video: Joi.string().required(),
 });
 
 export { createProductValidation, updateProductValidation };

@@ -2,16 +2,16 @@ import validate from '../utils/validation.js';
 import ResponseError from '../utils/response-error.js';
 import { createCommentValidation } from '../validations/comment-validation.js';
 import Comment from '../models/comment.js';
-import { Types } from 'mongoose';
+import Video from '../models/video.js';
 
 const create = async (request) => {
     const comment = validate(createCommentValidation, request);
-    return await Comment.create(comment);
-}
-
-const getAll = async (videoId) => {
-    const id = new Types.ObjectId(videoId);
-    return await Comment.find({ video: id }).sort({ timestamp: -1 });
+    const video = Video.findById(comment.video);
+    delete comment.video;
+    const newComment = await Comment.create(comment);
+    video.comments.push(newComment._id);
+    await video.save();
+    return newComment;
 }
 
 const remove = async (id) => {
@@ -23,5 +23,5 @@ const remove = async (id) => {
 }
 
 export default {
-    create, getAll, remove
+    create, remove
 }

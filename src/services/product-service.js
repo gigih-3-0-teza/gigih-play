@@ -2,16 +2,20 @@ import validate from '../utils/validation.js';
 import { createProductValidation, updateProductValidation } from '../validations/product-validation.js';
 import Product from '../models/product.js';
 import ResponseError from '../utils/response-error.js';
-import { Types } from 'mongoose';
+import Video from '../models/video.js';
 
 const create = async (request) => {
     const product = validate(createProductValidation, request);
-    return await Product.create(product);
+    const video = Video.findById(product.video);
+    delete product.video;
+    const newProduct = await Product.create(product);
+    video.products.push(newProduct._id);
+    await video.save();
+    return newProduct;
 }
 
-const getAll = async (videoId) => {
-    const id = new Types.ObjectId(videoId);
-    return await Product.find({ video: id });
+const getAll = async () => {
+    return await Product.find();
 }
 
 const getById = async (id) => {

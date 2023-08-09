@@ -21,7 +21,6 @@ router.delete("/products/:id", productController.remove);
 
 // Comment API
 router.post("/comments", commentController.create);
-router.get("/comments", commentController.getAll);
 router.delete("/comments/:id", commentController.remove);
 
 export default router;

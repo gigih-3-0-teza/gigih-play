@@ -18,33 +18,16 @@ export const connectDB = () => {
     db.once("connected", async () => {
         logger.info("Database connected!");
         if (await Video.countDocuments().exec() == 0) {
+            const productJson = JSON.parse(fs.readFileSync('./src/resources/product.json', 'utf8'));
+            const products = await Product.create(productJson);
+            const commentJson = JSON.parse(fs.readFileSync('./src/resources/comment.json', 'utf8'));
+            const comments = await Comment.create(commentJson);
             const videoJson = JSON.parse(fs.readFileSync('./src/resources/video.json', 'utf8'));
-            const video = await Video.create(videoJson.map(v => {
-                v.createdAt = Date.now();
-                v.updatedAt = Date.now();
+            await Video.create(videoJson.map(v => {
+                v.products = products.map(p => p._id);
+                v.comments = comments.map(c => c._id);
                 return v;
             }));
-            const productJson = JSON.parse(fs.readFileSync('./src/resources/product.json', 'utf8'));
-            const product = [];
-            video.forEach(v => {
-                productJson.forEach(p => {
-                    p.video = v._id;
-                    p.createdAt = Date.now();
-                    p.updatedAt = Date.now();
-                    product.push(p);
-                });
-            });
-            await Product.create(product);
-            const commentJson = JSON.parse(fs.readFileSync('./src/resources/comment.json', 'utf8'));
-            const comment = [];
-            video.forEach(v => {
-                commentJson.forEach(c => {
-                    c.video = v._id;
-                    c.timestamp = Date.now();
-                    comment.push(c);
-                });
-            });
-            await Comment.create(comment);
         }
     });
 }

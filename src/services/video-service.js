@@ -13,7 +13,7 @@ const getAll = async () => {
 }
 
 const getById = async (id) => {
-    const video = await Video.findById(id);
+    const video = await Video.findById(id).populate('products').populate('comments');
     if (!video) {
         throw new ResponseError(404, 'Video not found!');
     }
